@@ -30,26 +30,31 @@ class DefaultPresenter extends \Venne\Developer\Presenter\FrontPresenter {
 		return $form;
 	}
 
+	public function renderDefault(){
+		$this->template->entity = $this->context->services->contact->getRepository()->findOneBy(array("url" => "contact"));
+		
+	}
+
 	public function contactFormSubmitted($form)
 	{
 		$values = $form->getValues();
 		$msg = "Odesláno!";
-		
+
 		$mail = new \Nette\Mail\Message;
 		$mail->setFrom("$values->name <$values->email>")  // gmail pravdepodobne ignoruje
 		->addTo($this->context->params["adminMail"])
 		->setSubject("Zpráva - Venne")
 		->setBody($values->message);
-		
-		
+
+
 		try {
 			$this->send($mail);
 		} catch (Exception $e) {
 			$msg = "Odeslání selhalo!";
-		} 
+		}
 		$this->flashMessage($msg);
 		$this->redirect('this');
-		
+
 	}
 
 
