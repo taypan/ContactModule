@@ -3,8 +3,6 @@
 
 namespace App\ContactModule;
 
-use \Venne\Developer\Module\Service\IRouteService;
-
 /**
  * @author Jiří Müller
  */
@@ -35,16 +33,9 @@ class Module extends \Venne\Developer\Module\AutoModule {
 					'module' => 'Contact',
 					'presenter' => 'Default',
 					'action' => 'default',
-					'url' => array(
-						\Nette\Application\Routers\Route::VALUE => NULL,
-						\Nette\Application\Routers\Route::FILTER_IN => NULL,
-						\Nette\Application\Routers\Route::FILTER_OUT => NULL,
-					)
 			)
 		);
 	}
-
-
 
 
 }
