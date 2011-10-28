@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\EmptyModule;
+namespace App\ContactModule;
 
 use \Venne\Developer\Module\Service\IRouteService;
 
@@ -13,13 +13,13 @@ class Module extends \Venne\Developer\Module\AutoModule {
 
 	public function getName()
 	{
-		return "empty";
+		return "contact";
 	}
 
 
 	public function getDescription()
 	{
-		return "empty description";
+		return "contact description";
 	}
 
 
@@ -31,8 +31,8 @@ class Module extends \Venne\Developer\Module\AutoModule {
 
 	public function setRoutes(\Nette\Application\Routers\RouteList $router, $prefix = "")
 	{
-		$router[] = new \Nette\Application\Routers\Route($prefix . '[<url .+>]', array(
-					'module' => 'Empty',
+		$router[] = new \Nette\Application\Routers\Route($prefix, array(
+					'module' => 'Contact',
 					'presenter' => 'Default',
 					'action' => 'default',
 					'url' => array(
@@ -45,17 +45,6 @@ class Module extends \Venne\Developer\Module\AutoModule {
 	}
 
 
-	public function setServices(\Venne\Application\Container $container)
-	{
-		parent::setServices($container);
-		$container->services->addService("empty", new Service("empty", $container->doctrineContainer->entityManager, $container->hookManager));
-	}
 
-
-	public function setHooks(\Venne\Application\Container $container, \App\HookModule\Manager $manager)
-	{
-		parent::setHooks($container, $manager);
-		$manager->addHook("admin\\menu", \callback($container->services->empty, "hookAdminMenu"));
-	}
 
 }
