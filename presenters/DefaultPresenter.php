@@ -9,6 +9,10 @@ use Venne\Application\UI;
  */
 class DefaultPresenter extends \Venne\Developer\Presenter\FrontPresenter {
 
+	
+	/**
+	 * @privilege read
+	 */
 
 
 }
