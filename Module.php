@@ -3,8 +3,6 @@
 
 namespace App\ContactModule;
 
-use \Venne\Developer\Module\Service\IRouteService;
-
 /**
  * @author Jiří Müller
  */
